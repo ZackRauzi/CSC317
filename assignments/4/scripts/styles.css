@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+button{
+    width: 50px;
+    height: 50px;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+}
+
+#input{
+    height: 50px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#calcButtons{
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    gap: 10px;
+    padding: 25px;
+}
+
+#calculator{
+    display: grid;
+    grid-template-rows: (1, 50px);
+    gap: 10px;
+    padding: 25px;
+    background-color: rgb(40, 40, 40);
+    max-width: 300px;
+}
+
+.orangeButton{
+    width: 50px;
+    height: 50px;
+    color: white;
+    background-color: rgb(180, 70, 0);
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+}
+
+button:hover{
+    background-color: lightgray;
+}
+
+button:active{
+    background-color: darkgray;
+}

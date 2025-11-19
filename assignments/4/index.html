@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator App</title>
+    <link rel="stylesheet" href="scripts/styles.css">
+</head>
+<body>
+    
+    <div id="calculator">
+        <input id="input" readonly>
+
+        <div id="calcButtons">
+            <button onclick="changeSign()">+/-</button>
+            <button onclick="makeFraction()">%</button>
+            <button onclick="memory()">MC</button>
+            <button class="orangeButton" onclick="divide('/')">/</button>
+
+
+            <button onclick="pressNum('9')">9</button>
+            <button onclick="pressNum('8')">8</button>
+            <button onclick="pressNum('7')">7</button>
+            <button class="orangeButton" onclick="multiply('x')">x</button>
+            <button onclick="pressNum('6')">6</button>
+            <button onclick="pressNum('5')">5</button>
+            <button onclick="pressNum('4')">4</button>
+            <button class="orangeButton" onclick="subtract('-')">-</button>
+            <button onclick="pressNum('3')">3</button>
+            <button onclick="pressNum('2')">2</button>
+            <button onclick="pressNum('1')">1</button>
+            <button class="orangeButton" onclick="add()">+</button>
+            <button onclick="clearNum()">AC</button>
+            <button onclick="pressZero('0')">0</button>
+            <button onclick="decimal('.')">.</button>
+            <button class="orangeButton" onclick="equals('=')">=</button>
+        </div>
+    </div>
+    
+    <script src="scripts/script.js"></script>
+</body>
+</html>
+
