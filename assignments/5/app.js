@@ -1,47 +1,72 @@
-import express from 'express';
-import exercisesRoute from './routes/api/exercises.js';
+import express from "express";
+const app = express();
+
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+import exercisesRouter from "./routes/api/exercises.js";
+import routinesRouter from "./routes/api/routines.js";
+
+import logger from "./middleware/logger.js";
+import errorHandler from "./middleware/errorHandler.js";
+
+const PORT = process.env.PORT || 3000;
 import dotenv from "dotenv";
 dotenv.config();
 
+//DEVTESTING
+import pool from "./config/db.js";
+pool.query("SELECT NOW()")
+  .then(res => console.log("Neon Connected:", res.rows[0].now))
+  .catch(err => console.error("DB ERROR:", err));
 
 
-
-const app = express();
-app.set('view engine', 'ejs');
-app.use(express.static("public"));
+//MIDDLEWARE
+app.use(logger);
 app.use(express.json());
 
+//STATIC FILE
+app.use(express.static(path.join(__dirname, "public")));
+
+//VIEWS
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
+app.get("/exercises", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "exercises.html"));
+});
+app.get("/routines", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "routines.html"));
+});
+
+//API
+app.use("/api/exercises", exercisesRouter);
+app.use("/api/routines", routinesRouter);
+
+//ERROR HANDLER (keep at end of program)
+app.use(errorHandler);
+
+//DEV CONNECTION TEST
+app.listen(PORT, () =>
+  console.log(`Server running at http://localhost:${PORT}`)
+);
 
 
-//ROUTES
-app.get('/', (req, res) => {
-    console.log('Homepage');
-    res.render('index');
-})
-
-app.use('/exercise', exercisesRoute);
-
-app.get('/routine', (req, res) => {
-    console.log('routine');
-    res.json({ message: 'Error' });
-})
+// import express from 'express';
+// import exercisesRoute from './routes/api/exercises.js';
+// import dotenv from "dotenv";
+// dotenv.config();
 
 
-//ERROR HANDLING
-app.use((req, res) => {
-  res.status(404).json({ message: 'Not Found' });
-})
-
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ message: 'Internal Server Error' });
-})
 
 
-//PORT CONFIG
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-})
+
+// const app = express();
+// app.set('view engine', 'ejs');
+// app.use(express.static("public"));
+// app.use(express.json());
+
 
 
