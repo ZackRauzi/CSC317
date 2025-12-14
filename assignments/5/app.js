@@ -52,21 +52,3 @@ app.use(errorHandler);
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
 );
-
-
-// import express from 'express';
-// import exercisesRoute from './routes/api/exercises.js';
-// import dotenv from "dotenv";
-// dotenv.config();
-
-
-
-
-
-// const app = express();
-// app.set('view engine', 'ejs');
-// app.use(express.static("public"));
-// app.use(express.json());
-
-
-
