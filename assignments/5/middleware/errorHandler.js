@@ -1,5 +1,10 @@
-//CATCH-ALL ERROR HANDLER
-export default function errorHandler(err, req, res, next) {
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+//500 CATCH-ALL ERROR HANDLER
+export default function errorHandler500(err, req, res, next) {
   console.error("Error:", err);
   const status = err.status || 500;
   res.status(status).json({
