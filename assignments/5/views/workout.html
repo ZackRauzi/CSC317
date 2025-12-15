@@ -3,7 +3,7 @@
 <!-- HEAD -->
 <head>
   <meta charset="UTF-8" />
-  <title>Routines</title>
+  <title>Track Workout</title>
   <link rel="stylesheet" href="/css/tailwind.css" />
 </head>
 
@@ -29,40 +29,36 @@
         </nav>
     </header>
 
-    <!-- ROUTINES PAGE -->
+    <!-- WORKOUT PAGE -->
     <main class="p-6 max-w-3xl mx-auto space-y-12">
-        <!-- CREATE ROUTINE -->
-        <section class="bg-slate-800 p-6 rounded-xl shadow space-y-6">
-            <h2 class="text-2xl font-bold">Create Routine</h2>
-            <input id="routineTitle" placeholder="Routine Title" class="w-full p-2 rounded bg-slate-900 border border-slate-700" required>
-            <div class="space-y-3">
-                <h3 class="text-lg font-semibold">Add Exercise</h3>
-                <select id="exerciseSelect" class="w-full p-2 rounded bg-slate-900 border border-slate-700 text-slate-200">
-                    <option value="">Select Exercise...</option>
-                </select>
-                <div class="flex gap-3">
-                    <input id="exerciseSets" type="number" min="1" placeholder="Sets" class="w-1/2 p-2 rounded bg-slate-900 border border-slate-700">
-                    <input id="exerciseReps" type="number" min="1" placeholder="Reps" class="w-1/2 p-2 rounded bg-slate-900 border border-slate-700">
-                </div>
-                <button id="addExerciseBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 p-3 rounded-xl text-white font-semibold">Add Exercise to Routine</button>
-            </div>
-            <div class="mt-4">
-                <h3 class="text-lg font-semibold mb-2">Exercises Added</h3>
-                <ul id="tempExerciseList" class="space-y-2"></ul>
-            </div>
-            <button id="saveRoutineBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 p-3 rounded-xl text-white font-semibold mt-4">Save Routine</button>
-        </section>
-        <!-- YOUR ROUTINES -->
-        <section class="bg-slate-800 p-6 rounded-xl shadow space-y-6">
-            <h2 class="text-2xl font-bold">Your Routines</h2>
-            <div id="routineList" class="space-y-4"></div>
+        <h2 class="text-3xl font-bold text-center">Track Workout</h2>
+
+        <!-- ROUTINE SELECTOR -->
+        <section id="routineSelectContainer" class="bg-slate-800 p-6 rounded-xl shadow space-y-4 w-full">
+            <label class="block text-lg font-semibold">Choose a routine:</label>
+            <select id="routineSelect" class="w-full p-2 rounded bg-slate-900 border border-slate-700 text-slate-200">
+                <option value="">Select a routine...</option>
+            </select>
+            <button id="startWorkoutBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 p-3 rounded-xl text-white font-semibold">Start Workout</button>
         </section>
 
+        <!-- TRACKING SECTION -->
+        <section id="workoutContainer" class="hidden bg-slate-800 p-6 rounded-xl shadow space-y-6 w-full">
+            <div class="flex items-center justify-between">
+                <h2 id="workoutRoutineName" class="text-2xl font-bold"></h2>
+                <div class="text-right">
+                    <p class="text-xs uppercase tracking-wide text-slate-400">Workout Time</p>
+                    <p id="workoutTimer" class="text-xl font-semibold text-indigo-400">0m 00s</p>
+                </div>
+            </div>
+            <div id="exerciseList" class="space-y-4"></div>
+            <button id="finishWorkoutBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 p-3 rounded-xl text-white font-semibold">Finish Workout</button>
+        </section>
     </main>
 
     <!-- FOOTER (ALL PAGES) -->
     <footer class="p-4 text-center text-slate-500 border-t border-slate-800 text-sm">Zack's Exercise Tracker © 2025</footer>
-    
-    <script src="/js/routines.js"></script>
+
+    <script src="/js/workout.js"></script>
 </body>
 </html>

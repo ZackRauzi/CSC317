@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercises</title>
+  <link rel="stylesheet" href="/css/tailwind.css" />
+</head>
+
+<!-- BODY -->
+<body class="min-h-screen bg-slate-900 text-slate-100 flex flex-col">
+
+    <!-- HEADER (ALL PAGES) -->
+    <header class="p-4 flex items-center justify-between bg-slate-900 border-b border-slate-700">
+        <a href="/" class="text-2xl font-bold text-indigo-400">Zack's Workout Tracker</a>
+        <nav class="flex items-center gap-6 text-sm">
+            <a href="/workout" class="text-slate-200 hover:text-white">Start Workout</a>
+            <details class="relative group">
+                <summary class="cursor-pointer text-slate-200 hover:text-white flex items-center gap-1 list-none select-none transition">
+                    Create
+                    <span class="transition-transform duration-200 group-open:rotate-180">▾</span>
+                </summary>
+                <div class="absolute right-0 mt-2 w-40 bg-slate-800 border border-slate-700 rounded shadow-lg py-2 z-20 origin-top scale-y-0 opacity-0 transition-all duration-200 ease-out group-open:scale-y-100 group-open:opacity-100">
+                    <a href="/exercises" class="block px-4 py-2 hover:bg-slate-700 text-slate-200">Exercise</a>
+                    <a href="/routines" class="block px-4 py-2 hover:bg-slate-700 text-slate-200">Routine</a>
+                </div>
+            </details>
+            <a href="/history" class="text-slate-200 hover:text-white">History</a>
+        </nav>
+    </header>
+
+    <!-- EXERCISES PAGE -->
+    <main class="p-6 max-w-3xl mx-auto space-y-12">
+
+        <!-- CREATE EXERCISE -->
+        <section class="bg-slate-800 p-6 rounded-xl shadow space-y-6">
+            <h2 class="text-2xl font-bold">Create Exercise</h2>
+            <form id="exerciseForm" class="space-y-4">
+                <input name="name" placeholder="Exercise Name" class="w-full p-2 rounded bg-slate-900 border border-slate-700" required>
+                <select name="exerciseType" required class="w-full p-2 rounded bg-slate-900 border border-slate-700 text-slate-200">
+                    <option value="">Select Type</option>
+                    <option value="strength">Strength</option>
+                    <option value="stretch">Stretch</option>
+                    <option value="cardio">Cardio</option>
+                    <option value="misc">Misc</option>
+                </select>
+                <input name="muscleGroup" placeholder="Muscle Group" class="w-full p-2 rounded bg-slate-900 border border-slate-700">
+                <input name="equipmentName" placeholder="Equipment Name" class="w-full p-2 rounded bg-slate-900 border border-slate-700">
+                <textarea name="notes" placeholder="Notes" class="w-full p-2 rounded bg-slate-900 border border-slate-700"></textarea>
+                <button class="w-full bg-emerald-600 hover:bg-emerald-700 p-3 rounded-xl text-white font-semibold">Add Exercise</button>
+            </form>
+        </section>
+
+        <!-- YOUR EXERCISES LIST -->
+        <section class="bg-slate-800 p-6 rounded-xl shadow space-y-6">
+            <div class="flex items-center justify-between">
+                <h2 class="text-2xl font-bold">Your Exercises</h2>
+                <div class="flex items-center gap-3">
+                    <select id="filterType" class="p-2 rounded bg-slate-900 border border-slate-700 text-slate-200">
+                        <option value="">All Types</option>
+                        <option value="strength">Strength</option>
+                        <option value="stretch">Stretch</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="misc">Misc</option>
+                    </select>
+                    <button id="applyFilters" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 rounded-xl text-white font-semibold">Apply</button>
+                </div>
+            </div>
+            <div id="exerciseList" class="space-y-4"></div>
+        </section>
+
+    </main>
+
+    <!-- EDIT POPUP -->
+    <div id="editModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+        <div class="bg-slate-800 p-6 rounded-xl shadow-xl w-96 space-y-4 border border-slate-700">
+            <h2 class="text-xl font-bold text-white">Edit Exercise</h2>
+            <input id="editName" class="w-full p-2 bg-slate-900 border border-slate-700 rounded text-white">
+            <select id="editType" class="w-full p-2 bg-slate-900 border border-slate-700 rounded text-white">
+                <option value="strength">Strength</option>
+                <option value="stretch">Stretch</option>
+                <option value="cardio">Cardio</option>
+                <option value="misc">Misc</option>
+            </select>
+            <input id="editGroup" class="w-full p-2 bg-slate-900 border border-slate-700 rounded text-white" placeholder="Muscle Group">
+            <input id="editEquipment" class="w-full p-2 bg-slate-900 border border-slate-700 rounded text-white" placeholder="Equipment Name">
+            <textarea id="editNotes" class="w-full p-2 bg-slate-900 border border-slate-700 rounded text-white" placeholder="Notes"></textarea>
+            <div class="flex justify-end gap-3 pt-3">
+                <button id="cancelEdit" class="px-4 py-2 bg-slate-600 hover:bg-slate-500 rounded text-white">Cancel</button>
+                <button id="saveEdit" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 rounded text-white font-semibold">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER (ALL PAGES) -->
+    <footer class="p-4 text-center text-slate-500 border-t border-slate-800 text-sm">Zack's Exercise Tracker © 2025</footer>
+
+    <script src="/js/exercises.js"></script>
+</body>
+</html>
