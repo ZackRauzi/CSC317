@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 
 import exercisesRouter from "./routes/api/exercises.js";
 import routinesRouter from "./routes/api/routines.js";
+import historyRouter from "./routes/api/history.js";
 
 import logger from "./middleware/logger.js";
 import errorHandler from "./middleware/errorHandler.js";
@@ -40,12 +41,25 @@ app.get("/exercises", (req, res) => {
 app.get("/routines", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "routines.html"));
 });
+app.get("/workout", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "workout.html"));
+});
+app.get("/history", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "history.html"));
+});
 
 //API
 app.use("/api/exercises", exercisesRouter);
 app.use("/api/routines", routinesRouter);
+app.use("/api/history", historyRouter);
 
 //ERROR HANDLER (keep at end of program)
+//404 PAGE
+app.use((req, res) => {
+  console.log("404 handler reached!");
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
+//500 ERROR CATCH-ALL
 app.use(errorHandler);
 
 //DEV CONNECTION TEST
