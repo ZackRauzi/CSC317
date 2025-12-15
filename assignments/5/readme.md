@@ -47,3 +47,8 @@ Team Responsibilities:  Since I am completing this project without a group, I wi
 3. **Authentication**
     - Guest access storing data in cookies
     - Log in access for user to access data through different sessions and devices
+
+
+
+
+//NODE_OPTIONS=--dns-result-order=ipv4first NODE_TLS_REJECT_UNAUTHORIZED=0 
