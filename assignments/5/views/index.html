@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+<head>
+  <meta charset="UTF-8" />
+  <title>Workout Tracker</title>
+  <link rel="stylesheet" href="/css/tailwind.css" />
+</head>
+
+<!-- BODY -->
+<body class="min-h-screen bg-slate-900 text-slate-100 flex flex-col">
+
+    <!-- HEADER (ALL PAGES) -->
+    <header class="p-4 flex items-center justify-between bg-slate-900 border-b border-slate-700">
+        <a href="/" class="text-2xl font-bold text-indigo-400">Zack's Exercise Tracker</a>
+        <nav class="flex items-center gap-6 text-sm">
+            <a href="/routines" class="text-slate-200 hover:text-white">Start Workout</a>
+            <details class="relative group">
+                <summary class="cursor-pointer text-slate-200 hover:text-white flex items-center gap-1 list-none select-none transition">
+                    Create
+                    <span class="transition-transform duration-200 group-open:rotate-180">▾</span>
+                </summary>
+                <div class="absolute right-0 mt-2 w-40 bg-slate-800 border border-slate-700 rounded shadow-lg py-2 z-20 origin-top scale-y-0 opacity-0  transition-all duration-200 ease-out group-open:scale-y-100 group-open:opacity-100">
+                    <a href="/exercises" class="block px-4 py-2 hover:bg-slate-700 text-slate-200">Exercise</a>
+                    <a href="/routines" class="block px-4 py-2 hover:bg-slate-700 text-slate-200">Routine</a>
+                </div>
+            </details>
+            <a href="/history" class="text-slate-200 hover:text-white">History</a>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <main class="flex-1 flex flex-col items-center justify-center text-center p-6 space-y-6">
+        <h2 class="text-3xl font-bold">Welcome to Zack's Workout Tracker</h2>
+        <p class="text-slate-300 max-w-xl">Simple, Fully Customizable, Free</p>
+
+        <!-- BUTTONS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 w-full max-w-3xl">
+
+            <!-- START WORKOUT -->
+            <a href="/workout" class="col-span-1 sm:col-span-2 bg-red-600 hover:bg-red-700 p-8 rounded-xl shadow text-center transition">
+                <h3 class="text-3xl font-bold mb-2">START WORKOUT</h3>
+                <p class="text-base text-slate-200">use your configured routines to begin tracking a workout</p>
+            </a>
+
+            <!-- Create Exercise -->
+            <a href="/exercises" class="bg-blue-600 hover:bg-blue-700 p-6 rounded-xl shadow text-center transition">
+                <h3 class="text-xl font-semibold mb-2">Create Exercise</h3>
+                <p class="text-sm text-slate-200">the building blocks for your routines</p>
+            </a>
+
+            <!-- Create Routine -->
+            <a href="/routines" class="bg-emerald-600 hover:bg-emerald-700 p-6 rounded-xl shadow text-center transition">
+                <h3 class="text-xl font-semibold mb-2">Create Routine</h3>
+                <p class="text-sm text-slate-200">combine exercises into a reapeatable routine</p>
+            </a>
+
+        </div>
+    </main>
+
+
+
+    <!-- FOOTER (ALL PAGES) -->
+    <footer class="p-4 text-center text-slate-500 border-t border-slate-800 text-sm">Zack's Exercise Tracker © 2025</footer>
+
+</body></html>
